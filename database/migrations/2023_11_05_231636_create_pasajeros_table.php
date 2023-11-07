@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vuelos', function (Blueprint $table) {
+        Schema::create('pasajeros', function (Blueprint $table) {
             $table->id();
-            $table->string('origen');
-            $table->String('destino');
-            $table->timestamp('fecha_vuelo')->nullable();
-            $table->timestamp('hora_vuelo')->nullable();
-            $table->integer('precio_vuelo');
-            $table->integer('cantidad_pasajeros');
+            $table->string('nombre');
+            $table->timestamp('numero')->unique();
+            $table->String('DNI')->unique();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vuelos');
+        Schema::dropIfExists('pasajeros');
     }
 };
